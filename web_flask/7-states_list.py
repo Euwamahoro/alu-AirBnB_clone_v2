@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-"""Starts a Flask web application"""
+"""
+Starts a Flask web application
+"""
 
 from models import storage
 from models.state import State
@@ -12,7 +14,9 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def states():
-    """Comment"""
+    """
+    Displays a list of states sorted by name
+    """
     states = storage.all('State').values()
     sorted_states = sorted(states, key=lambda state: state.name)
     return render_template('7-states_list.html', states=sorted_states)
@@ -20,7 +24,9 @@ def states():
 
 @app.teardown_appcontext
 def teardown(self):
-    """Remove the current SQLAlchemy Session"""
+    """
+    Removes the current SQLAlchemy Session
+    """
     storage.close()
 
 
