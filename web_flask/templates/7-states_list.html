@@ -6,9 +6,11 @@
 </head>
 
 <body>
+    <!-- This is the main body of the HTML file, displaying a list of states -->
     <h1>States</h1>
     <ul>
         {% for state in states %}
+        <!-- Iterating over the states and displaying each state's id and name -->
         <li>{{ state.id }}: <b>{{ state.name }}</b></li>
         {% endfor %}
     </ul>
