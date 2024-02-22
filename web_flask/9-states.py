@@ -5,6 +5,10 @@ In this module, we combine Flask with SQLAlchemy for the first time.
 Run this script from the AirBnB_v2 directory for imports.
 """
 from models import storage
+
+"""
+here we importing flask module from Flask
+"""
 from flask import Flask, render_template
 
 app = Flask(__name__)
