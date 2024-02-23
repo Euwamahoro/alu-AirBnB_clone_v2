@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 """
-This is module 8-cities_by_state
+This is module 9-states.
+
 In this module, we combine Flask with SQLAlchemy for the first time.
 Run this script from the AirBnB_v2 directory for imports.
 """
 from models import storage
-
-"""
-here we importing flask module from Flask
-"""
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -50,9 +47,10 @@ def cities_by_states(id_d="all"):
 
 @app.teardown_appcontext
 def close_session(exception):
-    """Remove the db session or save file"""
+    """Remove the db session or save file."""
     storage.close()
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
+

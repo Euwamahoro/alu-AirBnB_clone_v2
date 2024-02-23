@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """
-This is module 8-cities_by_state
-In this module we combine flask with sqlAlchemy for the first time
-Run this script from AirBnB_v2 directory for imports
+This is module 8-cities_by_states.
+
+In this module, we combine Flask with SQLAlchemy for the first time.
+Run this script from AirBnB_v2 directory for imports.
 """
 from models import storage
 from models.base_model import Base
@@ -20,9 +21,8 @@ from flask import render_template
 app = Flask(__name__)
 
 
-# @app.route('/cities_by_statess/')
 def cities_by_statess():
-    """List all cities by states"""
+    """List all cities by states."""
     states = storage.all("State").values()
     cities = storage.all("City").values()
     result = [[state, [city for city in cities if city.state_id == state.id]]
@@ -34,7 +34,7 @@ def cities_by_statess():
 
 @app.route('/cities_by_states/')
 def cities_by_states():
-    """List all cities by states"""
+    """List all cities by states."""
     states = storage.all("State").values()
     result = []
     for state in sorted(states, key=lambda x: x.name):
@@ -45,7 +45,7 @@ def cities_by_states():
 
 @app.teardown_appcontext
 def close_session(exception):
-    """Remove the db session or save file"""
+    """Remove the db session or save file."""
     storage.close()
 
 
