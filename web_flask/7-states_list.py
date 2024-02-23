@@ -27,9 +27,9 @@ Instructions:
       HBNB_TYPE_STORAGE=db python3 -m web_flask.7-states_list
 """
 
-from models import storage
-from models.state import State
-from flask import Flask, render_template
+from models import storage #This import storage from models
+from models.state import State #This one import state from models.state
+from flask import Flask, render_template # This one import Flask from flask
 
 app = Flask(__name__)
 

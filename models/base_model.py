@@ -9,7 +9,7 @@ import models
 from sqlalchemy import Column, Integer, String, Table, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from os import getenv
-import uuid
+import uuidchr
 
 if getenv('HBNB_TYPE_STORAGE', 'fs') == 'db':
     Base = declarative_base()
