@@ -21,6 +21,7 @@ def hbnb():
     """Add a path to the URL."""
     return "HBNB"
 
+
 @app.route('/c/<text>')
 def c_text(text):
     """Make a simple variable rule."""
