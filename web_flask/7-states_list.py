@@ -1,19 +1,16 @@
 #!/usr/bin/python3
 """
 Starts a Flask web application.
-
-This script defines a Flask web application with a route that displays a list
-of states retrieved from the storage engine (FileStorage or DBStorage).
-
-After each request, the current SQLAlchemy Session is removed.
-
 """
+
 
 from models import storage #This import storage from models
 from models.state import State #This one import state from models.state
 from flask import Flask, render_template # This one import Flask from flask
 
+
 app = Flask(__name__)
+
 
 @app.route('/states_list', strict_slashes=False)
 def states():
@@ -38,6 +35,6 @@ def teardown(exception):
     """
     storage.close()
 
-
+#Test the function
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
