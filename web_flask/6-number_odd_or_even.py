@@ -9,10 +9,12 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_hbnb():
     """Flask hello world."""
     return "Hello HBNB!"
+
 
 @app.route('/hbnb')
 def hbnb():
@@ -24,21 +26,25 @@ def c_text(text):
     """Make a simple variable rule."""
     return "C {}".format(text.replace("_", " "))
 
+
 @app.route('/python/', defaults={'text': "is cool"})
 @app.route('/python/<text>')
 def python_text(text):
     """Give a rule a default value."""
     return "Python {}".format(text.replace("_", " "))
 
+
 @app.route('/number/<int:n>')
 def number_route(n):
     """Make a rule only take a number."""
     return "{:d} is a number".format(n)
 
+
 @app.route('/number_template/<int:number>')
 def number_template(number):
     """Create an HTML page with a rule."""
     return render_template('5-number.html', number=number)
+
 
 @app.route('/number_odd_or_even/<int:n>')
 def number_odd_or_even(n):
