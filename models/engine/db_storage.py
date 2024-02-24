@@ -1,18 +1,8 @@
 #!/usr/bin/python3
 """This is the file storage class for AirBnB"""
-
-import sys
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-
-# Get the current script's directory
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Add the 'engine' directory to the Python path
-engine_dir = os.path.join(script_dir, 'engine')
-sys.path.append(engine_dir)
-
 from models.base_model import Base
 from models.user import User
 from models.state import State
@@ -103,7 +93,3 @@ class DBStorage:
         Closes Session
         """
         self.__session.close()
-
-if __name__ == "__main__":
-    # Values here are the default, mentioned as keepsake.
-    app.run(host="0.0.0.0", port="5000")
