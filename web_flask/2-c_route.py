@@ -9,15 +9,18 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_hbnb():
     """Flask hello world."""
     return "Hello HBNB!"
 
+
 @app.route('/hbnb')
 def hbnb():
     """Add a path to the URL."""
     return "HBNB"
+
 
 @app.route('/c/<text>')
 def c_text(text):
