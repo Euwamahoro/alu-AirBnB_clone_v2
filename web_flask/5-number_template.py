@@ -40,6 +40,7 @@ def number_template(number):
     """Create an HTML page with a rule."""
     return render_template('5-number.html', number=number)
 
+
 if __name__ == "__main__":
     # Values here are the default, mentioned as keepsake.
     app.run(host="0.0.0.0", port="5000")
