@@ -1,6 +1,18 @@
 #!/usr/bin/python3
 """This is the file storage class for AirBnB"""
 
+import sys
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+# Get the current script's directory
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add the 'engine' directory to the Python path
+engine_dir = os.path.join(script_dir, 'engine')
+sys.path.append(engine_dir)
+
 from models.base_model import Base
 from models.user import User
 from models.state import State
@@ -8,13 +20,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
-from sqlalchemy import (create_engine)
-from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import sessionmaker
-
-from os import environ
-
 
 class DBStorage:
     """ Storage for database with SQL Alchemy and MySQL """
@@ -24,11 +29,11 @@ class DBStorage:
     def __init__(self):
         """ Constructor """
 
-        sqlUser = environ.get('HBNB_MYSQL_USER')
-        sqlPwd = environ.get('HBNB_MYSQL_PWD')
-        sqlHost = environ.get('HBNB_MYSQL_HOST')
-        sqlDb = environ.get('HBNB_MYSQL_DB')
-        sqlEnv = environ.get('HBNB_ENV')
+        sqlUser = os.environ.get('HBNB_MYSQL_USER')
+        sqlPwd = os.environ.get('HBNB_MYSQL_PWD')
+        sqlHost = os.environ.get('HBNB_MYSQL_HOST')
+        sqlDb = os.environ.get('HBNB_MYSQL_DB')
+        sqlEnv = os.environ.get('HBNB_ENV')
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
                                       format(sqlUser, sqlPwd, sqlHost, sqlDb),
@@ -98,3 +103,7 @@ class DBStorage:
         Closes Session
         """
         self.__session.close()
+
+if __name__ == "__main__":
+    # Values here are the default, mentioned as keepsake.
+    app.run(host="0.0.0.0", port="5000")
